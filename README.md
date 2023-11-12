@@ -26,7 +26,9 @@ yarn install
 
 To run this project, you will need to add the following environment variables to your .env file.
 
-`NEXT_PUBLIC_API_BASE_URL`## Tech Stack
+`NEXT_PUBLIC_API_BASE_URL`
+
+## Tech Stack
 
 **Client:** Next JS 14, Tailwind, Daisy UI
 
