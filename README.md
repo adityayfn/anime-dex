@@ -1,24 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Anime Dex
 
-## Getting Started
+Anime Dex is an anime streaming platform and this was my first project while learning Next JS. I am using the API from https://docs.consumet.org/
 
-First, run the development server:
+# Instalation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# clone
+git clone https://github.com/adityayfn/anime-dex.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Make sure to install the dependencies:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+# npm
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+```
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file.
+
+`NEXT_PUBLIC_API_BASE_URL`## Tech Stack
+
+**Client:** Next JS 14, Tailwind, Daisy UI
 
 ## Learn More
 
