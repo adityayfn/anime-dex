@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import AnimeList from "@/components/AnimeList"
 import { getAnimesData } from "@/libs/api"
 import Pagination from "@/Utils/Pagination"
-import Loading from "./loading"
+import Loading from "../loading"
 import HeaderPage from "@/components/HeaderPage"
 
 const Page = () => {
@@ -13,7 +13,7 @@ const Page = () => {
   const [hasNextPage, setHasNextPage] = useState(false)
 
   const getAnimes = async () => {
-    const animes = await getAnimesData("anime", `?page=${page}`)
+    const animes = await getAnimesData("recent-episodes", `?page=${page}`)
     setData(animes?.data.results)
     setHasNextPage(animes?.data.hasNextPage)
 
@@ -28,7 +28,7 @@ const Page = () => {
   return (
     <>
       <section className="pb-4">
-        <HeaderPage title={"Home"} />
+        <HeaderPage title={"Recent Episodes"} />
         {isLoading ? (
           <Loading />
         ) : (

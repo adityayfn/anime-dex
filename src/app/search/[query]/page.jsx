@@ -50,7 +50,8 @@ const Page = ({ params }) => {
             ) : (
               <div className="flex flex-col gap-10 ">
                 <h1 className="text-xl mx-4 mt-4">
-                  Results for '{decodeQuery}...'
+                  Results for '
+                  <span className="text-secondary">{decodeQuery}</span>'
                 </h1>
                 <AnimeList api={searchAnime} />
                 <Pagination
