@@ -4,7 +4,7 @@ import InputSearch from "./InputSearch"
 import { usePathname } from "next/navigation"
 const Item = () => {
   const pathName = usePathname()
-  console.log(pathName)
+
   return (
     <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-5">
       <Link
