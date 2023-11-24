@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 const AnimeList = ({ api }) => {
@@ -14,7 +15,8 @@ const AnimeList = ({ api }) => {
           key={index}
           onClick={() => sendId(anime.id)}
         >
-          <img src={anime.image} alt="anime-image" className="h-full" />
+          <Image src={anime.image} fill loading="lazy" alt={anime.image} />
+
           <div className=" absolute bottom-0 bg-neutral w-full opacity-90 p-3 flex flex-col justify-center items-center group-hover:text-secondary">
             <h1 className=" text-center font-bold ">{anime.title}</h1>
             {anime.episodeNumber ? (
