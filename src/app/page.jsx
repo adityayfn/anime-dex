@@ -13,7 +13,7 @@ const Page = () => {
   const [hasNextPage, setHasNextPage] = useState(false)
 
   const getAnimes = async () => {
-    const animes = await getAnimesData("anime", `?page=${page}`)
+    const animes = await getAnimesData("recent-episodes", `?page=${page}`)
     setData(animes?.data.results)
     setHasNextPage(animes?.data.hasNextPage)
 

@@ -15,14 +15,7 @@ const Item = () => {
       >
         Top Airing
       </Link>
-      <Link
-        href={"/recent-episodes"}
-        className={` hover:text-secondary hover:underline text-xl cursor-pointer ${
-          pathName == "/recent-episodes" ? "text-secondary" : "text-white"
-        }`}
-      >
-        Recent Episodes
-      </Link>
+
       <InputSearch />
     </div>
   )
