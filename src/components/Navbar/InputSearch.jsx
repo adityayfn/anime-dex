@@ -14,7 +14,6 @@ const InputSearch = () => {
     if (query.trim() !== "") {
       if (e.key === "Enter" || e.type === "click") {
         e.preventDefault()
-        // localStorage.setItem("query", query)
         router.push(`/search/${query}`)
       }
     }
@@ -31,10 +30,10 @@ const InputSearch = () => {
           onKeyDown={handleSearch}
         />
         <button
-          className="absolute top-2 end-1 text-secondary "
+          className="absolute top-2 end-1 btn-secondary px-2 rounded-md "
           onClick={handleSearch}
         >
-          <Icon path={mdiMagnify} size={1} />
+          <h1>Search</h1>
         </button>
       </div>
     </>

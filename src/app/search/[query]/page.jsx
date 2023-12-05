@@ -16,6 +16,7 @@ const Page = ({ params }) => {
 
   const getAnimes = async () => {
     const animes = await getAnimesData(query, `?page=${page}`)
+    console.log(animes)
     setSearchAnime(animes?.data.results)
     setHasNextPage(animes.data.hasNextPage)
     setTimeout(() => {

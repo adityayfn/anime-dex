@@ -8,6 +8,7 @@ const Iframe = ({ linkStreamActive }) => {
       allowFullScreen
       frameBorder="1"
       referrerPolicy="same-origin"
+      title={linkStreamActive}
     />
   )
 }
