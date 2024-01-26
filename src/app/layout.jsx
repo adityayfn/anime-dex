@@ -12,10 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${gabarito.className} bg-color-dark`}
-        suppressHydrationWarning={true}
-      >
+      <body className={`${gabarito.className}`} suppressHydrationWarning={true}>
         <div className="relative z-10">
           <Navbar />
         </div>

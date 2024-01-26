@@ -24,6 +24,7 @@ const page = ({ params }) => {
   const getEpisodes = async () => {
     const animes = await getAnimesData("info", `/${animeId}`)
     setData(animes?.data)
+    console.log(animes)
   }
 
   const [servers, setServers] = useState([])
@@ -55,7 +56,7 @@ const page = ({ params }) => {
 
     setTimeout(() => {
       setIsLoading(false)
-    }, 1000)
+    }, 500)
   }, [animeId])
 
   useEffect(() => {
@@ -103,7 +104,7 @@ const page = ({ params }) => {
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
               />
-              <EpisodesList episodeList={filteredEpisodes} />
+              <EpisodesList episodeList={filteredEpisodes} nameId={id} />
             </div>
           </div>
         </div>

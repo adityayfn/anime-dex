@@ -22,9 +22,7 @@ const page = ({ params }) => {
     if (animes.status == 200) setData(animes.data)
     else setIsError(true)
 
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
+    setIsLoading(false)
   }
   const filteredEpisodes = data?.episodes?.filter((eps) =>
     String(eps.number).includes(searchQuery.toLowerCase())

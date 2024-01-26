@@ -16,9 +16,8 @@ const page = () => {
     const animes = await getAnimesData("top-airing", `?page=${page}`)
     setData(animes?.data.results)
     setHasNextPage(animes?.data.hasNextPage)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
+    setIsLoading(false)
+    
   }
 
   useEffect(() => {

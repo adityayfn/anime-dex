@@ -19,9 +19,7 @@ const Page = ({ params }) => {
     console.log(animes)
     setSearchAnime(animes?.data.results)
     setHasNextPage(animes.data.hasNextPage)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
+    setIsLoading(false)
   }
 
   useEffect(() => {

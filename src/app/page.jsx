@@ -16,10 +16,7 @@ const Page = () => {
     const animes = await getAnimesData("recent-episodes", `?page=${page}`)
     setData(animes?.data.results)
     setHasNextPage(animes?.data.hasNextPage)
-
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 1300)
+    setIsLoading(false)
   }
   useEffect(() => {
     getAnimes()
