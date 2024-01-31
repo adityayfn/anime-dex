@@ -4,7 +4,7 @@ import Item from "./Item"
 const Navbar = () => {
   return (
     <>
-      <header className="bg-neutral p-3 border-b border-secondary">
+      <header className="bg-neutral p-3 border-b-2 border-secondary">
         <div className="flex justify-between items-center">
           <Link href={"/"} className="text-3xl font-bold text-secondary">
             AnimeDex
