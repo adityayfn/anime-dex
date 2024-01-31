@@ -17,7 +17,6 @@ const page = () => {
     setData(animes?.data.results)
     setHasNextPage(animes?.data.hasNextPage)
     setIsLoading(false)
-    
   }
 
   useEffect(() => {
@@ -25,14 +24,28 @@ const page = () => {
   }, [page])
   return (
     <section>
-      <HeaderPage title={"Top Airing"} />
       {isLoading ? (
         <Loading />
       ) : (
-        <div className="flex flex-col gap-10">
-          <AnimeList api={data} />
-          <Pagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
-        </div>
+        <>
+          <div className="xl:-mt-20">
+            <img
+              src="/jjk.jpg"
+              className="w-full h-56 md:h-80 xl:h-full"
+              loading="lazy"
+            />
+          </div>
+          <HeaderPage title={"Top Airing"} />
+
+          <div className="flex flex-col gap-10">
+            <AnimeList api={data} />
+            <Pagination
+              page={page}
+              setPage={setPage}
+              hasNextPage={hasNextPage}
+            />
+          </div>
+        </>
       )}
     </section>
   )

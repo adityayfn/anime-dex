@@ -25,18 +25,27 @@ const Page = () => {
   return (
     <>
       <section className="pb-4">
-        <HeaderPage title={"Home"} />
         {isLoading ? (
           <Loading />
         ) : (
-          <div className="flex flex-col gap-10">
-            <AnimeList api={data} />
-            <Pagination
-              page={page}
-              setPage={setPage}
-              hasNextPage={hasNextPage}
-            />
-          </div>
+          <>
+            <div className="xl:-mt-20">
+              <img
+                src="/jjk.jpg"
+                className="w-full h-56 md:h-80 xl:h-full"
+                loading="lazy"
+              />
+            </div>
+            <HeaderPage title={"Home"} />
+            <div className="flex flex-col gap-10 ">
+              <AnimeList api={data} />
+              <Pagination
+                page={page}
+                setPage={setPage}
+                hasNextPage={hasNextPage}
+              />
+            </div>
+          </>
         )}
       </section>
     </>
