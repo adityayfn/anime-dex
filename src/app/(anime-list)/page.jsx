@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import AnimeList from "@/components/AnimeList"
 import { getAnimesData } from "@/libs/api"
 import Pagination from "@/Utils/Pagination"
-import Loading from "../(anime-list)/loading"
 import HeaderPage from "@/components/HeaderPage"
 import SkeletonList from "@/components/AnimeList/SkeletonList"
 
