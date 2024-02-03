@@ -2,7 +2,6 @@
 import { getAnimesData } from "@/libs/api"
 import { useEffect, useState } from "react"
 import AnimeList from "@/components/AnimeList"
-import Loading from "../../../(anime-list)/loading"
 import Pagination from "@/Utils/Pagination"
 import Link from "next/link"
 import SkeletonList from "@/components/AnimeList/SkeletonList"
