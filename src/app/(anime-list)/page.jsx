@@ -3,8 +3,9 @@ import { useEffect, useState } from "react"
 import AnimeList from "@/components/AnimeList"
 import { getAnimesData } from "@/libs/api"
 import Pagination from "@/Utils/Pagination"
-import Loading from "./loading"
+import Loading from "../(anime-list)/loading"
 import HeaderPage from "@/components/HeaderPage"
+import SkeletonList from "@/components/AnimeList/SkeletonList"
 
 const Page = () => {
   const [page, setPage] = useState(1)
@@ -25,18 +26,15 @@ const Page = () => {
   return (
     <>
       <section className="pb-4">
+        <HeaderPage title={"Home"} />
         {isLoading ? (
-          <Loading />
+          <SkeletonList
+            dummy={[
+              0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+            ]}
+          />
         ) : (
           <>
-            <div className="xl:-mt-20">
-              <img
-                src="/jjk.jpg"
-                className="w-full h-56 md:h-80 xl:h-full"
-                loading="lazy"
-              />
-            </div>
-            <HeaderPage title={"Home"} />
             <div className="flex flex-col gap-10 ">
               <AnimeList api={data} />
               <Pagination

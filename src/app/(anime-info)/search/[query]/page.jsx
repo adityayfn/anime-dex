@@ -2,9 +2,10 @@
 import { getAnimesData } from "@/libs/api"
 import { useEffect, useState } from "react"
 import AnimeList from "@/components/AnimeList"
-import Loading from "@/app/loading"
+import Loading from "../../../(anime-list)/loading"
 import Pagination from "@/Utils/Pagination"
 import Link from "next/link"
+import SkeletonList from "@/components/AnimeList/SkeletonList"
 
 const Page = ({ params }) => {
   const { query } = params
@@ -32,8 +33,8 @@ const Page = ({ params }) => {
     <>
       <section className=" pb-4">
         {isLoading ? (
-          <div className="min-h-screen">
-            <Loading />
+          <div className="min-h-screen mt-[4.2rem]">
+            <SkeletonList dummy={[0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12]} />
           </div>
         ) : (
           <div>

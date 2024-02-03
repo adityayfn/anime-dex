@@ -1,9 +1,10 @@
 "use client"
 
-import Loading from "@/app/loading"
+import Loading from "../../../(anime-list)/loading"
 import EpisodesList from "@/components/EpisodesList"
 import Header from "@/components/EpisodesList/Header"
 import HeaderPage from "@/components/HeaderPage"
+import SkeletonInfo from "@/components/InfoAnime/SkeletonInfo"
 import Iframe from "@/components/Streaming/Iframe"
 import Server from "@/components/Streaming/Server"
 import { getAnimesData } from "@/libs/api"
@@ -65,16 +66,15 @@ const page = ({ params }) => {
 
   return (
     <section>
+      <HeaderPage title={"Streaming Anime"} />
       {isLoading ? (
-        <Loading />
+        <SkeletonInfo />
       ) : (
-        <div>
-          <HeaderPage title={"Streaming Anime"} />
-
-          <div className="mx-2 xl:flex xl:gap-4 xl:justify-center ">
-            <div className="xl:order-2">
+        <>
+          <div className="mx-4 xl:flex xl:gap-4  ">
+            <div className="xl:order-2 xl:w-[72%]">
               <div className="title">
-                <h1 className="text-xl text-secondary">{capitalize(title)}</h1>
+                <h1 className="text-2xl text-secondary">{capitalize(title)}</h1>
               </div>
               <div className="my-10 mx-4">
                 <Iframe linkStreamActive={linkStreamActive} />
@@ -98,7 +98,7 @@ const page = ({ params }) => {
                 </div>
               </div>
             </div>
-            <div className="xl:order-1 xl:w-[25rem]">
+            <div className="xl:order-1 xl:w-[28%]">
               <Header
                 data={data}
                 searchQuery={searchQuery}
@@ -107,7 +107,7 @@ const page = ({ params }) => {
               <EpisodesList episodeList={filteredEpisodes} nameId={id} />
             </div>
           </div>
-        </div>
+        </>
       )}
     </section>
   )

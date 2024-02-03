@@ -3,7 +3,7 @@ import React from "react"
 
 const EpisodesList = ({ episodeList, nameId }) => {
   return (
-    <div className="flex flex-wrap justify-center gap-4 my-4 max-h-72 overflow-y-auto xl:max-h-[28rem]">
+    <div className="flex flex-wrap justify-center gap-4 my-4 max-h-72 overflow-y-auto xl:max-h-[28rem] px-2 ">
       {episodeList?.map((eps, index) => (
         <Link
           href={`/anime/${eps.id}`}

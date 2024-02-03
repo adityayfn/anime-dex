@@ -7,7 +7,7 @@ const InfoAnime = ({ data }) => {
         <img
           src={data.image}
           alt="anime image"
-          className="my-0 mx-auto w-64 h-full"
+          className="xl:my-6 my-0 mx-auto w-64 max-h-96"
         />
       </div>
       <div className="mx-5 my-3 md:mx-0   md:w-[450px] xl:w-full xl:max-w-[1000px]">

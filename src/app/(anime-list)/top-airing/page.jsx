@@ -5,6 +5,7 @@ import { getAnimesData } from "@/libs/api"
 import React, { useState, useEffect } from "react"
 import Loading from "../loading"
 import HeaderPage from "@/components/HeaderPage"
+import SkeletonList from "@/components/AnimeList/SkeletonList"
 
 const page = () => {
   const [page, setPage] = useState(1)
@@ -23,20 +24,16 @@ const page = () => {
     getAnimes()
   }, [page])
   return (
-    <section>
+    <section className="pb-4">
+      <HeaderPage title={"Top Airing"} />
       {isLoading ? (
-        <Loading />
+        <SkeletonList
+          dummy={[
+            0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+          ]}
+        />
       ) : (
         <>
-          <div className="xl:-mt-20">
-            <img
-              src="/jjk.jpg"
-              className="w-full h-56 md:h-80 xl:h-full"
-              loading="lazy"
-            />
-          </div>
-          <HeaderPage title={"Top Airing"} />
-
           <div className="flex flex-col gap-10">
             <AnimeList api={data} />
             <Pagination
