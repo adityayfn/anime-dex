@@ -2,7 +2,6 @@
 
 import { getAnimesData } from "@/libs/api"
 import { useEffect, useState } from "react"
-import Loading from "../../../(anime-list)/loading"
 import InfoAnime from "@/components/InfoAnime"
 import EpisodesList from "@/components/EpisodesList"
 import Header from "@/components/EpisodesList/Header"
@@ -36,7 +35,7 @@ const page = ({ params }) => {
     <section>
       <HeaderPage title={"Anime Info"} />
       {isLoading ? (
-        // <Loading />
+        
         <SkeletonInfo />
       ) : (
         <div>

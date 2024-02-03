@@ -1,6 +1,5 @@
 "use client"
 
-import Loading from "../../../(anime-list)/loading"
 import EpisodesList from "@/components/EpisodesList"
 import Header from "@/components/EpisodesList/Header"
 import HeaderPage from "@/components/HeaderPage"
