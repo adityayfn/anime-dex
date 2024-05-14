@@ -1,30 +1,32 @@
 "use client"
-import { getAnimesData } from "@/libs/api"
-import { useEffect, useState } from "react"
-import AnimeList from "@/components/AnimeList"
-import Pagination from "@/Utils/Pagination"
+import { FC, useEffect, useState } from "react"
 import Link from "next/link"
-import SkeletonList from "@/components/AnimeList/SkeletonList"
+import SkeletonList from "@/components/AnimeCard/SkeletonCard"
+import AnimeCard from "@/components/AnimeCard"
+import { Anime } from "@/schema"
+import { API_URL } from "@/app/constant"
 
-const Page = ({ params }) => {
+interface IProps {
+  params: {
+    query: string
+  }
+}
+
+const Page: FC<IProps> = ({ params }) => {
   const { query } = params
-
-  const [page, setPage] = useState(1)
-  const [searchAnime, setSearchAnime] = useState([])
-  const [hasNextPage, setHasNextPage] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [searchAnimes, setSearchAnimes] = useState<Anime[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const getAnimes = async () => {
-    const animes = await getAnimesData(query, `?page=${page}`)
-    console.log(animes)
-    setSearchAnime(animes?.data.results)
-    setHasNextPage(animes.data.hasNextPage)
+    const res = await fetch(`${API_URL}/search?q=${query}`)
+    const animes = await res.json()
+    setSearchAnimes(animes.data)
     setIsLoading(false)
   }
 
   useEffect(() => {
     getAnimes()
-  }, [page])
+  }, [])
 
   const decodeQuery = decodeURI(query)
 
@@ -37,7 +39,7 @@ const Page = ({ params }) => {
           </div>
         ) : (
           <div>
-            {searchAnime.length < 1 ? (
+            {searchAnimes === null ? (
               <div className="min-h-[50vh] flex flex-col justify-center items-center">
                 <h1 className="text-2xl font-bold">
                   No results for '{decodeQuery}'
@@ -52,12 +54,7 @@ const Page = ({ params }) => {
                   Results for '
                   <span className="text-secondary">{decodeQuery}</span>'
                 </h1>
-                <AnimeList api={searchAnime} />
-                <Pagination
-                  page={page}
-                  setPage={setPage}
-                  hasNextPage={hasNextPage}
-                />
+                <AnimeCard api={searchAnimes} />
               </div>
             )}
           </div>

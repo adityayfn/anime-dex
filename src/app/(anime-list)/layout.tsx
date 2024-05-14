@@ -1,6 +1,7 @@
 import { Gabarito } from "next/font/google"
 import "../globals.css"
 import Navbar from "@/components/Navbar"
+import { FC } from "react"
 
 const gabarito = Gabarito({ subsets: ["latin"] })
 
@@ -9,22 +10,23 @@ export const metadata = {
   description: "Platform Streaming Anime",
 }
 
-export default function RootLayout({ children }) {
+interface LayoutProps {
+  children: React.ReactNode
+}
+
+const RootLayout: FC<LayoutProps> = ({ children }) => {
   return (
     <html lang="en">
       <body className={`${gabarito.className}`} suppressHydrationWarning={true}>
         <div className="relative z-10">
           <Navbar />
         </div>
-        <div className="-mt-5 xl:-mt-20">
-          <img
-            src="/jjk.jpg"
-            className="w-full h-56 md:h-80 xl:h-full"
-            loading="lazy"
-          />
+
+        <div className=" gap-2 md:mx-2 xl:mx-10 xl:my-10">
+          <div className=" ">{children}</div>
         </div>
-        {children}
       </body>
     </html>
   )
 }
+export default RootLayout

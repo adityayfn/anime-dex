@@ -1,6 +1,10 @@
-import React from "react"
+import React, { FC } from "react"
 
-const Iframe = ({ linkStreamActive }) => {
+interface Props {
+  linkStreamActive: string
+}
+
+const Iframe: FC<Props> = ({ linkStreamActive }) => {
   return (
     <iframe
       src={linkStreamActive}
