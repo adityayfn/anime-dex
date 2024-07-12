@@ -34,7 +34,7 @@ const page: FC<PageProps> = ({ params }) => {
   const getEpisodes = async () => {
     const res = await fetch(`${API_URL}/episode/${id}`)
     const anime = await res.json()
-    setDownloadUrl(anime.data.downloadUrl)
+    setDownloadUrl(anime?.data?.downloadUrl)
     setEpisodesList(anime.data.info.episodeList)
     setPrevEps(anime?.data?.episodeSebelumnya)
     setNextEps(anime?.data?.episodeSelanjutnya)
