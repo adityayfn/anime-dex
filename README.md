@@ -1,6 +1,6 @@
 # Anime Dex
 
-Anime Dex is an anime streaming platform and this was my first project while learning Next JS. I am using the API from https://docs.consumet.org/
+Anime Dex is an anime streaming platform and this was my first project while learning Next JS. I am using the API from https://wajik-anime-api.vercel.app/otakudesu
 
 # Instalation
 
