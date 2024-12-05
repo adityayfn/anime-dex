@@ -22,11 +22,11 @@ const InputSearch = () => {
         <form onSubmit={handleSearch}>
           <input
             type="text"
-            className="md:w-48 p-2 rounded-md outline-none w-full text-neutral"
+            className="md:w-48 h-10 p-2 rounded-md outline-none w-full text-neutral"
             placeholder="Search Anime..."
             ref={searchRef}
           />
-          <button className="absolute top-2 end-1 btn-secondary px-2 rounded-md ">
+          <button className="absolute end-1 btn btn-sm btn-secondary mt-1 rounded-md ">
             <h1>Search</h1>
           </button>
         </form>

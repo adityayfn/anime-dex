@@ -16,36 +16,31 @@ const InfoAnime: FC<InfoAnimeProps> = ({ data }) => {
         />
       </div>
       <div className="mx-5 my-3 md:mx-0   md:w-[450px] xl:w-full xl:max-w-[1000px]">
-        <h1 className="text-secondary text-2xl">{data.judul}</h1>
+        <h1 className="text-secondary text-2xl">{data.title}</h1>
         <p>
           <span className="text-green-700 font-bold"> Description </span> :
           {"- "}
-          {data.sinopsis}
+          {data.synopsis.paragraphs}
         </p>
-        <h1>
-          <span className="text-green-700 font-bold"> Release Date </span>:{" "}
-          {data.tanggalRilis}
-        </h1>
-        <p>
-          <span className="text-green-700 font-bold"> Type </span>: {data.tipe}
-        </p>
+
         <h1>
           <span className="text-green-700 font-bold"> Total Episodes </span>:{" "}
-          {data.totalEpisode}
+          {data.episodes}
         </h1>
         <h1>
-          <span className="text-green-700 font-bold"> Score </span>: {data.skor}
+          <span className="text-green-700 font-bold"> Score </span>:{" "}
+          {data.score}
         </h1>
         <h1>
           <span className="text-green-700 font-bold"> Studio </span>:{" "}
-          {data.studio}
+          {data.studios}
         </h1>
         <h1>
           <span className="text-green-700 font-bold">Genres</span>:{" "}
-          {data.genres.map((genre, index) => (
+          {data.genreList.map((genre, index) => (
             <span key={index}>
-              {genre.judul}
-              {index !== data.genres.length - 1 && ", "}
+              {genre.title}
+              {index !== data.genreList.length - 1 && ", "}
             </span>
           ))}
         </h1>
