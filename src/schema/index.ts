@@ -3,65 +3,16 @@ export type Navigation = {
   path: string
 }
 
-export type GenreInfo = {
-  judul: string
-  slug: string
-  href: string
-  otakudesuUrl: string
-}
-
-export type AnimesInfo = {
-  judul: string
-  slug: string
-  href: string
-  poster: string
-  episodeTerbaru: string
-  hariRilis: string
-  tanggalRilisTerbaru: string
-  otakudesuUrl: string
-}
-export type Anime = {
-  judul: string
-  slug: string
-  href: string
-  poster: string
-  rating: string
-  jumlahEpisode: string
-  studio: string
-  musim: string
-  otakudesuUrl: string
-  genres: GenreInfo[]
-  sinopsis: string[]
-}
-
 export type ResponseData = {
-  onGoing: AnimesInfo[]
-  completed: AnimesInfo[]
+  ongoing: ResponseNested
+  completed: ResponseNested
 }
 
 export type EpisodeList = {
-  judul: string
-  slug: string
+  title: number
+  episodeId: string
   href: string
   otakudesuUrl: string
-  tanggalRilis: string
-}
-export type AnimeInfo = {
-  judul: string
-  japanese: string
-  skor: string
-  produser: string
-  tipe: string
-  status: string
-  totalEpisode: string
-  durasi: string
-  tanggalRilis: string
-  studio: string
-  poster: string
-  genres: GenreInfo[]
-  sinopsis: string[]
-  batch: any[]
-  episodeList: EpisodeList[]
 }
 
 export type isPagination = {
@@ -71,13 +22,107 @@ export type isPagination = {
   totalPages: number
 }
 
-export interface PageState {
+export type PageState = {
   value: number
 }
 
+export type ResponseNested = {
+  animeList: AnimeList[]
+  href: string
+  otakudesuUrl: string
+}
+
+export type AnimeList = {
+  animeId: string
+  episodes: number
+  href: string
+  lastReleaseDate: string
+  otakudesuUrl: string
+  poster: string
+  score: string
+  title: string
+}
+
+export type AnimeInfo = {
+  title: string
+  poster: string
+  japanese: string
+  score: string
+  producers: string
+  status: string
+  episodes: number
+  duration: string
+  aired: string
+  studios: string
+  batch: string | null
+  synopsis: {
+    paragraphs: string[]
+    connections: any[]
+  }
+  genreList: GenreList[]
+  episodeList: EpisodeList[]
+  recommendedAnimeList: RecommendedAnime[]
+  pagination: null | isPagination
+}
+
+export type GenreList = {
+  genreId: string
+  href: string
+  otakudesuUrl: string
+  title: string
+}
+
+export type RecommendedAnime = {
+  title: string
+  poster: string
+  animeId: string
+  href: string
+  otakudesuUrl: string
+}
+
+type StreamingServer = {
+  title: string
+  serverId: string
+  href: string
+}
+
+type StreamingQuality = {
+  title: string
+  serverList: StreamingServer[]
+}
+
 export type DownloadsUrl = {
-  [key: string]: {
-    judul: string
+  title: string
+  size: string
+  urls: {
+    title: string
     url: string
   }[]
+}
+
+type NextEpisode = {
+  title: string
+  episodeId: string
+  href: string
+  otakudesuUrl: string
+}
+
+type Server = {
+  qualities: StreamingQuality[]
+}
+
+export type Download = {
+  qualities: DownloadsUrl[]
+}
+
+export type EpisodeData = {
+  title: string
+  releaseTime: string
+  defaultStreamingUrl: string
+  hasPrevEpisode: boolean
+  prevEpisode: null | any
+  hasNextEpisode: boolean
+  nextEpisode: NextEpisode | null
+  server: Server
+  downloadUrl: Download
 }
