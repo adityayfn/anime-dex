@@ -217,4 +217,4 @@ export const GENRES = [
   },
 ]
 
-export const API_URL = "https://wajik-anime-api.vercel.app/otakudesu"
+export const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL
