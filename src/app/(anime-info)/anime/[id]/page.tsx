@@ -8,7 +8,7 @@ import HeaderPage from "@/components/HeaderPage"
 import SkeletonInfo from "@/components/InfoAnime/SkeletonInfo"
 import Iframe from "@/components/Streaming/Iframe"
 
-import { DownloadsUrl, EpisodeList } from "@/schema"
+import { Download, DownloadsUrl, EpisodeList } from "@/schema"
 import Link from "next/link"
 import { FC, useEffect, useState } from "react"
 
@@ -26,19 +26,25 @@ const page: FC<PageProps> = ({ params }) => {
   const [linkStreamActive, setLinkStreamActive] = useState<string>("")
   const [nextEps, setNextEps] = useState<null | EpisodeList>()
   const [prevEps, setPrevEps] = useState<null | EpisodeList>()
-  const [downloadUrl, setDownloadUrl] = useState<DownloadsUrl>({})
+  const [downloadUrl, setDownloadUrl] = useState<Download>()
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const [episodesList, setEpisodesList] = useState<EpisodeList[]>([])
 
+  // "tlng-episode-10-sub-indo"
+
   const getEpisodes = async () => {
-    const res = await fetch(`${API_URL}/episode/${id}`)
+    const res = await fetch(`/api/animes/episode?q=${id}`)
+    if (!res.ok) {
+      throw new Error("Failed fetching datas")
+    }
     const anime = await res.json()
+    console.log(anime)
     setDownloadUrl(anime?.data?.downloadUrl)
     setEpisodesList(anime.data.info.episodeList)
     setPrevEps(anime?.data?.episodeSebelumnya)
     setNextEps(anime?.data?.episodeSelanjutnya)
-    setLinkStreamActive(anime.data.streamingUrl)
+    setLinkStreamActive(anime.data.defaultStreamingUrl)
   }
 
   const title = id.replace(/-/g, " ")
@@ -81,7 +87,7 @@ const page: FC<PageProps> = ({ params }) => {
                 <div className="flex justify-between my-3">
                   {prevEps !== null && (
                     <Link
-                      href={`/anime/${prevEps?.slug}`}
+                      href={`/anime/${prevEps?.episodeId}`}
                       className="btn btn-secondary"
                     >
                       Previous Episode
@@ -89,7 +95,7 @@ const page: FC<PageProps> = ({ params }) => {
                   )}
                   {nextEps !== null && (
                     <Link
-                      href={`/anime/${nextEps?.slug}`}
+                      href={`/anime/${nextEps?.episodeId}`}
                       className="btn btn-secondary"
                     >
                       Next Episode

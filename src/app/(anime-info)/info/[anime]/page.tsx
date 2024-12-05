@@ -19,8 +19,13 @@ const page = ({ params }: any) => {
   const [isError, setIsError] = useState<boolean>(false)
 
   const getInfoAnime = async () => {
-    const res = await fetch(`${API_URL}/anime/${anime}`)
+    const res = await fetch(`/api/animes/info?q=${anime}`)
+    console.log(res)
+    if (!res.ok) {
+      throw new Error("Failed fetching datas")
+    }
     const animes = await res.json()
+    console.log(animes)
 
     setEpisodesList(animes?.data?.episodeList)
     setData(animes.data)

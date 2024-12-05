@@ -4,21 +4,25 @@ import SkeletonCard from "@/components/AnimeCard/SkeletonCard"
 import React, { useState, useEffect } from "react"
 import HeaderPage from "@/components/HeaderPage"
 import AnimeCard from "@/components/AnimeCard"
-import { Anime, PageState, isPagination } from "@/schema"
+import { AnimeList, PageState, isPagination } from "@/schema"
 import { API_URL } from "@/app/constant"
 
 const OnGoingPage = () => {
   const [page, setPage] = useState<PageState>({ value: 1 })
-  const [data, setData] = useState<Anime[]>([])
+  const [data, setData] = useState<AnimeList[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [isPagination, setIsPagination] = useState<isPagination>()
 
   const getAnimes = async () => {
-    const res = await fetch(`${API_URL}/ongoing?page=${page.value}`)
+    const res = await fetch(`/api/animes/on-going?page=${page.value}`)
+    console.log(res)
+    if (!res.ok) {
+      throw new Error("Failed fetching datas")
+    }
     const animes = await res.json()
 
     setIsPagination(animes.pagination)
-    setData(animes?.data)
+    setData(animes?.data.animeList)
     setIsLoading(false)
   }
 

@@ -5,7 +5,7 @@ import AnimeCard from "@/components/AnimeCard"
 import SkeletonCard from "@/components/AnimeCard/SkeletonCard"
 import GenreTabs from "@/components/GenresTabs"
 import HeaderPage from "@/components/HeaderPage"
-import { Anime, PageState, isPagination } from "@/schema"
+import { AnimeList, PageState, isPagination } from "@/schema"
 import React, { FC, useEffect, useState } from "react"
 
 interface TabState {
@@ -13,7 +13,7 @@ interface TabState {
 }
 
 const AnimesByGenrePage = () => {
-  const [data, setData] = useState<Anime[]>([])
+  const [data, setData] = useState<AnimeList[]>([])
   const [isPagination, setIsPagination] = useState<isPagination>()
   const [page, setPage] = useState<PageState>({ value: 1 })
   const [tabActive, setTabActive] = useState<TabState>({ value: "action" })
@@ -21,12 +21,12 @@ const AnimesByGenrePage = () => {
 
   const getAnimesByGenre = async () => {
     const res = await fetch(
-      `${API_URL}/genres/${tabActive.value}?page=${page.value}`
+      `/api/animes/by-genre?q=${tabActive.value}&page=${page.value}`
     )
     const animes = await res.json()
 
     setIsPagination(animes.pagination)
-    setData(animes.data)
+    setData(animes.data.animeList)
     setIsLoading(false)
   }
 

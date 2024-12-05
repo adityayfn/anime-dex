@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from "react"
 import Link from "next/link"
 import SkeletonList from "@/components/AnimeCard/SkeletonCard"
 import AnimeCard from "@/components/AnimeCard"
-import { Anime } from "@/schema"
+import { AnimeList } from "@/schema"
 import { API_URL } from "@/app/constant"
 
 interface IProps {
@@ -14,13 +14,16 @@ interface IProps {
 
 const Page: FC<IProps> = ({ params }) => {
   const { query } = params
-  const [searchAnimes, setSearchAnimes] = useState<Anime[]>([])
+  const [searchAnimes, setSearchAnimes] = useState<AnimeList[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const getAnimes = async () => {
-    const res = await fetch(`${API_URL}/search?q=${query}`)
+    const res = await fetch(`/api/animes/search?q=${query}`)
+    if (!res.ok) {
+      throw new Error("Failed fetching datas")
+    }
     const animes = await res.json()
-    setSearchAnimes(animes.data)
+    setSearchAnimes(animes.data.animeList)
     setIsLoading(false)
   }
 

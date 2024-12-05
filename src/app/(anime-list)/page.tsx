@@ -2,18 +2,23 @@
 import { useEffect, useState } from "react"
 import HeaderPage from "@/components/HeaderPage"
 import SkeletonList from "@/components/AnimeCard/SkeletonCard"
-import { ResponseData } from "@/schema"
+import { AnimeList, ResponseData } from "@/schema"
 import AnimeCard from "@/components/AnimeCard"
 import { API_URL } from "../constant"
 
 const Page = () => {
-  const [data, setData] = useState<ResponseData>()
+  const [data, setData] = useState<AnimeList[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const getAnimes = async () => {
-    const res = await fetch(`${API_URL}/home`)
+    const res = await fetch(`/api/animes`)
+    if (!res.ok) {
+      throw new Error("Failed fetching datas")
+    }
     const animes = await res.json()
-    setData(animes.data)
+    console.log(res, animes)
+
+    setData(animes.data.animeList)
     setIsLoading(false)
   }
   useEffect(() => {
@@ -33,7 +38,7 @@ const Page = () => {
         ) : (
           <div>
             <div className="flex flex-col gap-10 ">
-              <AnimeCard api={data?.onGoing!!} />
+              <AnimeCard api={data} />
             </div>
           </div>
         )}
